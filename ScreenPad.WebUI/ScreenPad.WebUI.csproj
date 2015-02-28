@@ -159,7 +159,6 @@
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Content\Css\styles.css" />
     <Content Include="Content\Img\busy_gamepad.gif" />
     <Content Include="Content\Img\connect.gif" />
