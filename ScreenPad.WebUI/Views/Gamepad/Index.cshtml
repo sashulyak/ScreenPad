@@ -1,0 +1,28 @@
+﻿@model ScreenPad.WebUI.Models.GamepadModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <title>Джойстик</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/css/styles.css")">
+</head>
+    <body>
+        <div id="container" data-id="@Model.Id" data-busy-redirect-url="@Url.Action("Busy")">
+            <div id="cross">
+                <div id="left" data-message="left" class="button"></div>
+                <div id="right" data-message="right" class="button"></div>
+                <div id="middle"></div>
+                <div id="down" data-message="down" class="button"></div>
+                <div id="up" data-message="up" class="button"></div>
+            </div>
+            <div id="action" data-message="up" class="button big"></div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="@Url.Content("~/Scripts/jquery.signalR-2.1.2.min.js")"></script>
+        <script src="~/signalr/hubs" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/gamepad.js")"></script>
+    </body>
+</html>

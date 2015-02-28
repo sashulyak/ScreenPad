@@ -1,0 +1,63 @@
+﻿@model ScreenPad.WebUI.Models.GameModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Игра</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/css/styles.css")">
+</head>
+    <body>
+        <div id="start">
+            <img id="logo" src="@Url.Content("~/content/img/logo.gif")" alt="PLAY TETRIS"/>
+            <img id="qr" src="@Url.Action("QrCode")" alt="QR Code"/>
+            <h1>@Url.RouteUrl("Gamepad", null, Request.Url.Scheme, null)</h1>
+        </div>
+        
+        <div id="container" data-id="@Model.Id" data-high-score="@Model.HighScore">
+            <div id="tetris">
+                <div id="leftMenu">
+                    <div>
+                        <span id="level">1</span>
+                        <span class="subscribe">уровень</span>
+                    </div>
+                    <canvas id="upcoming"></canvas>
+                </div>
+                <canvas id="canvas">
+                    Sorry, this example cannot be run because your browser does not support the &lt;canvas&gt; element
+                </canvas>
+                <div id="rightMenu">
+                    <div>
+                        <div class="font48" id="countdown"></div>
+                        <span class="subscribe">сек</span>
+                    </div>
+                    <div id="scoreWrap">
+                        <span class="font48" id="totalScore">0</span>
+                        <span class="subscribe">счёт</span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="score"></div>
+        </div>
+        <div id="reconnecting">
+            <img src="@Url.Content("~/content/img/connect.gif")"/>
+        </div>
+        <div id="gameOver">
+            <h1 class="font48">ваш счёт</h1>
+            <span id="resultScore">0</span>
+            <h1 class="font48 red">рекорд</h1>
+            <span id="highScore" class="red">@Model.HighScore</span>
+        </div>
+        <script src="@Url.Content("~/Scripts/jquery-1.6.4.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/jquery.signalR-2.1.2.min.js")"></script>
+        <script src="~/signalr/hubs" type="text/javascript"></script>
+        <script src="@Url.Content("~/scripts/jquery.plugin.min.js")"></script>
+        <script src="@Url.Content("~/scripts/jquery.countdown.js")"></script>
+        <script src="@Url.Content("~/scripts/game.js")"></script>
+        <script src="@Url.Content("~/scripts/tetris.js")"></script>
+    </body>
+</html>

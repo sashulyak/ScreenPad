@@ -1,0 +1,32 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>title</title>
+    </head>
+    <body>
+        <div>
+            <form action="@Url.Action("LogOn")" method="POST">
+                @Html.ValidationSummary()
+
+                <label for="userName">Имя пользователя:</label>
+                <input type="text" name="userName"/>
+
+                <label for="password">Пароль:</label>
+                <input type="password" name="password"/>
+                
+                <input type="checkbox" name="rememberMe" value="true"/>
+                <input type="hidden" value="false" name="rememberMe" />
+                <label for="rememberMe">Запомнить меня</label>
+                
+                <input type="submit" value="Войти" />
+            </form>
+        </div>
+    </body>
+</html>

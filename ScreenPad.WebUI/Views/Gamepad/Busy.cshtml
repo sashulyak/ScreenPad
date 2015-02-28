@@ -1,0 +1,24 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Занято</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/css/styles.css")">
+</head>
+<body class="whiteBackground">
+    <div id="container" >
+        <div id="busy">
+            <img src="@Url.Content("~/content/img/busy_gamepad.gif")"/>
+            <h1>Кто-то уже играет в данный момент</h1>
+            <h2>Откройте эту страницу, когда на экране будет приглашение</h2>
+            <a class="submit" href="@Url.RouteUrl("Gamepad")">Обновить</a>
+        </div>
+    </div>
+</body>
+</html>

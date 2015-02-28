@@ -1,0 +1,197 @@
+﻿body      { font-family: Helvetica, sans-serif; margin: 0; background-color: #000; font-family: 'Open Sans'}
+.submit  { display: block; background-color: #fc3d4a; border-radius: 5px; color: #fff; font-weight: 600; font-size: 36px; line-height: 44px; margin-top: 45px; padding: 17px; text-decoration: none; }
+.whiteBackground { background-color: white;}
+.subscribe { font-weight: 700; font-size: 16px; color: #fff; display: block; text-align: center; text-transform: uppercase; }
+.font48 { font-weight: 700; font-size: 48px; color: #fff; display: block; text-align: center; }
+#container
+#tetris   { margin: 3em auto; }
+#stats    { display: inline-block; vertical-align: top; }
+#canvas   { display: inline-block; vertical-align: top; background-color: #fff;  float: left;}
+#leftMenu, #rightMenu { position: relative; float: left; }
+#menu p   { margin: 0.5em 0; text-align: center; }
+#menu p a { text-decoration: none; color: black; }
+#upcoming { display: block; margin: 0 auto; width: 150px; height: 150px; position: absolute; top: 0; bottom: 0; margin: auto; }
+#score    { background-color: #f7cb3b; position: fixed; bottom: 0; width: 100%; height: 0; z-index: -1;}
+#goal     { color: green; font-weight: bold; vertical-align: middle; }
+#start    { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 100; background-color: #fff;}
+#start *  { position: relative; display: block; text-align: center;color: #000; }
+#logo     { left: 50%; margin-left: -196px; margin-top: 55px;}
+#qr       { width: 440px; left: 50%; margin-left: -218px; margin-top: -30px; z-index: -1; }
+#start h1 { font-size: 20px; margin-top: -14px;}
+#rows     { color: blue; font-weight: bold; vertical-align: middle; }
+#stats    { position: absolute; bottom: 0em; right: 1em; }
+#level    { color: #fff; text-align: center; display: block; top: 0; bottom: 0; }
+#busy     { text-align: center; margin-top: 4%; }
+#busy *   { max-width: 430px; margin: auto; }
+#busy h1  { font-weight: 700; font-size: 42px; line-height: 50px; margin-top: 30px;}
+#busy h2  { font-weight: 600; font-size: 36px; line-height: 44px; margin-top: 45px;}
+#busy .submit  { width: 283px; margin-top: 48px; }
+#scoreWrap { margin-top: 275px; }
+/*@media screen and (min-width:   0px) and (min-height:   0px) {
+    #tetris     { font-size: 0.75em; width: 250px; }
+    #leftMenu   { width:  75px; height: 200px; }
+    #rightMenu  { width:  75px; height: 200px; }
+    #upcoming   { width:  50px; height:  50px; }
+    #canvas     { width: 100px; height: 200px; }
+    #level      { width:  50px; height:  50px; font-size: 40px; }
+} // 10px chunks
+@media screen and (min-width: 400px) and (min-height: 400px) {
+    #tetris     { font-size: 1.00em; width: 350px; }
+    #leftMenu   { width: 100px; height: 300px; }
+    #rightMenu  { width: 100px; height: 300px; }
+    #upcoming   { width:  75px; height:  75px; }
+    #canvas     { width: 150px; height: 300px; }
+    #level      { width:  75px; height:  75px;  font-size: 62px;}
+} // 15px chunks 
+@media screen and (min-width: 500px) and (min-height: 500px) {
+    #tetris     { font-size: 1.25em; width: 450px; }
+    #leftMenu   { width: 125px; height: 400px; }
+    #rightMenu  { width: 125px; height: 400px; }
+    #upcoming   { width: 100px; height: 100px; }
+    #canvas     { width: 200px; height: 400px; }
+    #level      { width: 100px; height: 100px; font-size: 85px; }
+} // 20px chunks 
+@media screen and (min-width: 600px) and (min-height: 600px) {
+    #tetris     { font-size: 1.50em; width: 550px; }
+    #leftMenu   { width: 150px; height: 500px; }
+    #rightMenu  { width: 150px; height: 500px; }
+    #upcoming   { width: 125px; height: 125px; }
+    #canvas     { width: 250px; height: 500px; }
+    #level      { width: 125px; height: 125px; font-size: 100px; }
+} // 25px chunks 
+@media screen and (min-width: 700px) and (min-height: 700px) {
+    #tetris     { font-size: 1.75em; width: 650px; }
+    #leftMenu   { width: 175px; height: 600px; }
+    #rightMenu  { width: 175px; height: 600px; }
+    #upcoming   { width: 150px; height: 150px; }
+    #canvas     { width: 300px; height: 600px; }
+    #level      { width: 150px; height: 150px; font-size: 117px; }
+} // 30px chunks 
+@media screen and (min-width: 800px) and (min-height: 800px) {
+     #tetris    { font-size: 2.00em; width: 750px; }
+     #leftMenu  { width: 200px; height: 700px; }
+     #rightMenu { width: 175px; height: 700px; }
+     #upcoming  { width: 175px; height: 175px; }
+     #canvas    { width: 350px; height: 700px; }
+     #level     { width: 175px; height: 175px; font-size: 135px;}
+} // 35px chunks */
+/*@media screen and (min-width: 900px) and (min-height: 900px) {*/
+     #tetris    { font-size: 2.25em; width: 936px; }
+     #leftMenu  { width: 268px; height: 800px; }
+     #rightMenu { width: 268px; height: 800px; }
+     #upcoming  { width: 200px; height: 200px; margin-left: 39px; }
+     #canvas    { width: 400px; height: 800px; }
+     #level     { font-weight: 700; font-size: 117px; line-height: 140px;}
+ /*}  40px chunks*/
+@media screen and (min-width: 320px) {
+    #busy     { text-align: center; margin-top: 23%; }
+    #busy *   { max-width: 215px; margin: auto; }
+    #busy img { width: 121px; } 
+    #busy h1  { font-weight: 700; font-size: 21px; line-height: 25px; margin-top: 15px;}
+    #busy h2  { font-weight: 600; font-size: 18px; line-height: 22px; margin-top: 24px;}
+    #busy .submit  { width: 141px; margin-top: 24px; font-size: 18px; line-height: 22px; padding: 8px; }
+}/*iphone 5s*/
+.button {
+    display: block;
+    background-color: #ffcc00;
+    position: absolute;
+}
+.button:active {
+    background-color: #c3ab4a;
+}
+.button.big {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+#left {
+    left: 0;
+    top: 35%;
+    width: 35%;
+    height: 30%;
+}
+#right {
+    right: 0;
+    top: 35%;
+    width: 35%;
+    height: 30%;
+}
+#down {
+    left: 35%;
+    bottom: 0;
+    width: 30%;
+    height: 35%;
+}
+#up {
+    right: 35%;
+    top: 0;
+    width: 30%;
+    height: 35%;
+}
+#action {
+    right: 6%;
+    width: 19%;
+}
+#middle {
+    display: block;
+    background-color: #ffcc00;
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    left: 35%;
+    top: 35%;
+}
+#reconnecting {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -194px;
+    margin-top: -119px;
+    width: 200px;
+    height: 200px;
+    z-index: 100;
+    background-color: white;
+    display: none;
+}
+#reconnecting p {
+    margin-top: 91px;
+}
+#gameOver {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: white;
+    text-align: center;
+    font-weight: 700;
+    padding-top: 100px;
+}
+#gameOver span {
+    font-size: 72px;
+    font-weight: 700;
+    
+}
+#gameOver h1 {
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    margin-top: 81px;
+}
+#gameOver .red {
+    color: #fc3d4a;
+}
+#countdown {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+}
+.clear{ clear: both; }
+#cross {
+    width: 30%;
+    position: absolute;
+    left: 6%;
+    top: 38px;
+}
