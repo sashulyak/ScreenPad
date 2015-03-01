@@ -24,15 +24,6 @@
         initCountdown(seconds);
     }
 
-    function goToNextLevel() {
-        levelScore = score - minLevelScore;
-        minLevelScore += scoreStep;
-        restartCountdown(timeLeft);
-        level++;
-        $level.text(level);
-        speed.start *= speedShiftingCoefficient;
-    }
-
     function showResults(totalScore) {
         pause();
         $resultScoreField.text(totalScore);
@@ -40,14 +31,6 @@
         setTimeout(function() {
             window.location.reload();
         }, 5000);
-    }
-
-    function timeIsOver() {
-        if (levelScore < minLevelScore) {
-            showResults(score);
-        } else {
-            goToNextLevel();
-        }
     }
 
     function setHighScore(score) {
@@ -58,6 +41,13 @@
         });
     }
 
+    function timeIsOver() {
+        if (levelScore < minLevelScore) {
+            setHighScore(score);
+            showResults(score);
+        }
+    }
+    
     function checkIfGameOver() {
         if (gameOver) {
             setHighScore(score);
@@ -69,13 +59,8 @@
         $totalScoreField.text(score);
     }
 
-    function checkIfLevelComplete() {
-        if (levelScore >= minLevelScore) {
-            goToNextLevel();
-        }
-    }
-
     function getGoalPercents() {
+        var levelScore = score % minLevelScore;
         return ((levelScore / minLevelScore) * 100).toFixed();
     }
 
@@ -86,19 +71,32 @@
         $scoreBar.animate({
             height: newBarHeight + "%",
             backgroundColor: colors[(level % colors.length) - 1]
-        }, {
-            duration: 500,
-            complete: function() {
-                $scoreBar.css('background-color', colors[(level % colors.length) - 1]);
-            }
-        });
+        }
+        ////, {
+        ////    duration: 500,
+        ////    complete: function() {
+        ////        $scoreBar.css('background-color', colors[(level % colors.length) - 1]);
+        ////    }
+        ////}
+        );
     }
 
     function timerTick() {
         checkIfGameOver();
         displayTotalScore();
-        checkIfLevelComplete();
+        calculateCurrentLevel();
         drawScoreProgressBar();
+    }
+
+    function calculateCurrentLevel() {
+        var oldLevel = level;
+        level = integerDivision(score, scoreStep) + 1;
+        minLevelScore = scoreStep * level;
+        if (oldLevel != level) {
+            restartCountdown(timeLeft);
+            speed.start *= speedShiftingCoefficient;
+        }
+        $level.text(level);
     }
 
     function initCountdown(seconds) {
@@ -162,6 +160,10 @@
                 $countdown.countdown('resume');
             });
         }
+    }
+
+    function integerDivision(x, y) {
+        return (x - x % y) / y;
     }
 
     $.connection.hub.stateChanged(connectionStateChanged);
