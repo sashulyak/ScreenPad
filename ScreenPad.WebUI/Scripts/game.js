@@ -7,7 +7,6 @@
         $scoreBar = $('#score'),
         $level = $('#level'),
         $resultScoreField = $('#resultScore'),
-        $highScoreField = $('#highScore'),
         prevScoreInPercents = 0,
         timeLeft = 60,
         minLevelScore = 300,
@@ -72,12 +71,6 @@
             height: newBarHeight + "%",
             backgroundColor: colors[(level % colors.length) - 1]
         }
-        ////, {
-        ////    duration: 500,
-        ////    complete: function() {
-        ////        $scoreBar.css('background-color', colors[(level % colors.length) - 1]);
-        ////    }
-        ////}
         );
     }
 
