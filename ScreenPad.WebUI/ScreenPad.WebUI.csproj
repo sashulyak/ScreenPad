@@ -150,7 +150,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GameHelper.cs" />
+    <Compile Include="Hubs\ConnectionMapping.cs" />
     <Compile Include="Hubs\GameHub.cs" />
+    <Compile Include="Hubs\IConnectionMapping.cs" />
     <Compile Include="Models\GamepadModel.cs" />
     <Compile Include="Models\GameModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,10 +7,10 @@ namespace ScreenPad.WebUI.Helpers
 {
     public static class GameHelper
     {
-        public static short GetRandomCode()
+        public static string GetRandomCode()
         {
             var random = new Random();
-            return (short) random.Next(1000, 9999);
+            return random.Next(10000, 99999).ToString();
         }
 
         public static long GetHighScore(HttpServerUtilityBase server)

@@ -10,7 +10,7 @@ namespace ScreenPad.WebUI.Builders
         {
             return new GameModel
                 {
-                    Id = GameHelper.GetRandomCode(),
+                    ConnectionName = GameHelper.GetRandomCode(),
                     HighScore = GameHelper.GetHighScore(server)
                 };
         }

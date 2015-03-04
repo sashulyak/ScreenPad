@@ -9,7 +9,7 @@ namespace ScreenPad.WebUI.Builders
         {
             return new GamepadModel
                 {
-                    Id = GameHelper.GetRandomCode()
+                    ConnectionName = GameHelper.GetRandomCode()
                 };
         }
     }

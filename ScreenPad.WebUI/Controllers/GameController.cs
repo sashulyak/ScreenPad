@@ -32,7 +32,7 @@ namespace ScreenPad.WebUI.Controllers
             return View("LogOn");
         }
 
-        public ActionResult QrCode()
+        public ActionResult QrCode(string connectionName)
         {
             var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
             QrCode qrCode;

@@ -7,6 +7,7 @@
         $scoreBar = $('#score'),
         $level = $('#level'),
         $resultScoreField = $('#resultScore'),
+        connectionName = $('#container').data('connectionName'),
         prevScoreInPercents = 0,
         timeLeft = 60,
         minLevelScore = 300,
@@ -17,6 +18,7 @@
 
     // Reference the auto-generated proxy for the hub.  
     var game = $.connection.gameHub;
+    game.qs = "name=" + connectionName;
 
     function restartCountdown(seconds) {
         $countdown.countdown('destroy');

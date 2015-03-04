@@ -2,7 +2,7 @@
 {
     public class GameModel
     {
-        public short Id { get; set; }
+        public string ConnectionName { get; set; }
 
         public long HighScore { get; set; }
     }
