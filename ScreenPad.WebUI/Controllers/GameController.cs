@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Gma.QrCodeNet.Encoding;
 using Gma.QrCodeNet.Encoding.Windows.Render;
 using ScreenPad.WebUI.Builders;
@@ -36,7 +37,7 @@ namespace ScreenPad.WebUI.Controllers
         {
             var qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
             QrCode qrCode;
-            var text = Url.Action("Index", "Gamepad", null, Request.Url.Scheme, null);
+            var text = Url.Action("Index", "Gamepad", new RouteValueDictionary(new { gameConnectionName = connectionName }), Request.Url.Scheme, null);
             qrEncoder.TryEncode(text, out qrCode);
             var renderer = new GraphicsRenderer(new FixedModuleSize(24, QuietZoneModules.Four), Brushes.Black, new SolidBrush(Color.White));
             Stream memoryStream = new MemoryStream();

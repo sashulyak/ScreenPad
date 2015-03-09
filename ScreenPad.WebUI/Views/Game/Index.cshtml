@@ -14,7 +14,7 @@
         <div id="start">
             <img id="logo" src="@Url.Content("~/content/img/logo.gif")" alt="PLAY TETRIS"/>
             <img id="qr" src="@Url.Action("QrCode", new {connectionName = Model.ConnectionName})" alt="QR Code"/>
-            <h1>@Url.RouteUrl("Gamepad", null, Request.Url.Scheme, null)</h1>
+            <h1>@Url.RouteUrl("Gamepad", new RouteValueDictionary(new { gameConnectionName = Model.ConnectionName }), Request.Url.Scheme, null)</h1>
         </div>
         
         <div id="container" data-connection-name="@Model.ConnectionName">

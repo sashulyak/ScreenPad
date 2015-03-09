@@ -1,16 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 
 namespace ScreenPad.WebUI.Hubs
 {
 	public class GameHub : Hub
 	{
-        private readonly static IConnectionMapping<string> connections = new ConnectionMapping<string>();
+        private readonly static IConnectionMapping<string> Connections = new ConnectionMapping<string>();
 
         public void Send(string message, string who)
 		{
-            foreach (var connectionId in connections.GetConnections(who))
+            foreach (var connectionId in Connections.GetConnections(who))
             {
                 Clients.Client(connectionId).addNewMessageToPage(message);
             }
@@ -20,14 +19,14 @@ namespace ScreenPad.WebUI.Hubs
 	    {
 	        var connectionName = Context.Request.QueryString["connectionName"];
 
-            connections.Add(connectionName, Context.ConnectionId);
+            Connections.Add(connectionName, Context.ConnectionId);
 
             return base.OnConnected();
 	    }
 
         public void Subscribe(string connectionName)
         {
-            connections.Add(connectionName, Context.ConnectionId);
+            Connections.Add(connectionName, Context.ConnectionId);
         }
     }
 }

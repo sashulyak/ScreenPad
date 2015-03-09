@@ -17,7 +17,7 @@ namespace ScreenPad.WebUI
             
             routes.MapRoute(
                 "Gamepad",
-                "gamepad",
+                "gamepad/{gameConnectionName}",
                 new { controller = "Gamepad", action = "Index" }
             );
 

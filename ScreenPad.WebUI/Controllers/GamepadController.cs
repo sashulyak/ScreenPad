@@ -11,20 +11,13 @@ namespace ScreenPad.WebUI.Controllers
         {
             gamepadModelBuilder = new GamepadModelBuilder();
         }
-        
-        //
-        // GET: /Gamepad/
-        public ActionResult Index()
-        {
-            var viewModel = gamepadModelBuilder.GetGamepad();
-            return View(viewModel);
-        }
 
         //
-        // GET: /Busy/
-        public ActionResult Busy()
+        // GET: /Gamepad/{gameConnectionName}
+        public ActionResult Index(string gameConnectionName)
         {
-            return View();
+            var viewModel = gamepadModelBuilder.GetGamepad(gameConnectionName);
+            return View(viewModel);
         }
     }
 }
