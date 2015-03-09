@@ -1,15 +1,14 @@
-﻿using ScreenPad.WebUI.Helpers;
-using ScreenPad.WebUI.Models;
+﻿using ScreenPad.WebUI.Models;
 
 namespace ScreenPad.WebUI.Builders
 {
     public class GamepadModelBuilder : IGamepadModelBuilder
     {
-        public GamepadModel GetGamepad()
+        public GamepadModel GetGamepad(string gameConnectionName)
         {
             return new GamepadModel
                 {
-                    ConnectionName = GameHelper.GetRandomCode()
+                    GameConnectionName = gameConnectionName
                 };
         }
     }

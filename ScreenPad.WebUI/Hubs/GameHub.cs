@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 
 namespace ScreenPad.WebUI.Hubs
@@ -11,13 +12,13 @@ namespace ScreenPad.WebUI.Hubs
 		{
             foreach (var connectionId in connections.GetConnections(who))
             {
-                Clients.Client(connectionId).addNewMessageToPage(message, Context.ConnectionId);
+                Clients.Client(connectionId).addNewMessageToPage(message);
             }
         }
 
-	    public override Task OnConnected()
+        public override Task OnConnected()
 	    {
-	        var connectionName = Context.QueryString["connectionName"];
+	        var connectionName = Context.Request.QueryString["connectionName"];
 
             connections.Add(connectionName, Context.ConnectionId);
 

@@ -2,6 +2,6 @@
 {
     public class GamepadModel
     {
-        public string ConnectionName { get; set; }
+        public string GameConnectionName { get; set; }
     }
 }

@@ -8,48 +8,32 @@
     
     // Reference the auto-generated proxy for the hub.  
     var game = $.connection.gameHub,
-        sessionId = $('#container').data('id'),
-        busyRedirectUrl = $('#container').data('busyRedirectUrl'),
+        gameConnectionName = $('#container').data('gameConnectionName'),
+        connectionName = "gp" + gameConnectionName,
         holdInterval,
         holdTimeout,
         holdTimeoutDuration = 500,
         holdIntervalPeriod = 50;
     
     game.client.addNewMessageToPage = function (message, id) {
-        if (id == sessionId) {
+        if (id === gameConnectionName) {
             switch (message) {
                 case "gameover": alert('игра окончена'); break;
-                case "busy": if (sessionId == id) window.location.replace(busyRedirectUrl); break;
             }
         }
     };
     // Start the connection.
+    $.connection.hub.qs = "connectionName=" + connectionName;
     $.connection.hub.start().done(function () {
-        game.server.send("start", sessionId);
-        /*$('.button').on("mousedown", function (ev) {
-            var message = $(this).data("message");
-            game.server.send(message, sessionId);
-            holdTimeout = setTimeout(function () {
-                holdInterval = setInterval(function () {
-                    console.log(message);
-                    game.server.send(message, sessionId);
-                }, holdIntervalPeriod);
-            }, holdTimeoutDuration);
-            return false;
-        });
-        $('.button').on("mouseup", function (ev) {
-            clearInterval(holdInterval);
-            clearTimeout(holdTimeout);
-            return false;
-        });*/
+        game.server.send("start", gameConnectionName);
         $('.button').on("touchstart", function (ev) {
             var message = $(this).data("message");
-            game.server.send(message, sessionId);
-            if (message == "down") {
+            game.server.send(message, gameConnectionName);
+            if (message === "down") {
                 holdTimeout = setTimeout(function() {
                     holdInterval = setInterval(function() {
                         console.log(message);
-                        game.server.send(message, sessionId);
+                        game.server.send(message, gameConnectionName);
                     }, holdIntervalPeriod);
                 }, holdTimeoutDuration);
             }
@@ -70,7 +54,7 @@ function connectionStateChanged(state) {
     var stateConversion = { 0: 'connecting', 1: 'connected', 2: 'reconnecting', 4: 'disconnected' };
     console.log('SignalR state changed from: ' + stateConversion[state.oldState]
      + ' to: ' + stateConversion[state.newState]);
-    if (state.newState == 2) {
+    if (state.newState === 2) {
         $.connection.hub.stop();
         $.connection.hub.start();
     }

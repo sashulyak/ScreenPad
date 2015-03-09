@@ -4,6 +4,6 @@ namespace ScreenPad.WebUI.Builders
 {
     interface IGamepadModelBuilder
     {
-        GamepadModel GetGamepad();
+        GamepadModel GetGamepad(string gameConnectionName);
     }
 }

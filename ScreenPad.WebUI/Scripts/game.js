@@ -1,6 +1,5 @@
 ﻿$(function () {
-    var sessionId = null,
-        $qrPopup = $('#start'),
+    var $qrPopup = $('#start'),
         $resultPopup = $('#gameOver'),
         $totalScoreField = $('#totalScore'),
         $countdown = $('#countdown'),
@@ -18,8 +17,7 @@
 
     // Reference the auto-generated proxy for the hub.  
     var game = $.connection.gameHub;
-    game.qs = "name=" + connectionName;
-
+    
     function restartCountdown(seconds) {
         $countdown.countdown('destroy');
         initCountdown(seconds);
@@ -106,8 +104,8 @@
         });
     }
 
-    game.client.addNewMessageToPage = function (message, id) {
-        if (playing && id === sessionId) {
+    game.client.addNewMessageToPage = function (message) {
+        if (playing) {
             switch (message) {                
             case "left":
                 actions.push(DIR.LEFT);
@@ -124,19 +122,15 @@
             }
         } else {
             if (message === "start") {
-                if (sessionId == null) {
-                    sessionId = id;
-                    $($qrPopup).hide();
-                    play();
-                    initCountdown(timeLeft);
-                } else {
-                    game.server.send("busy", id);
-                }
+                $($qrPopup).hide();
+                play();
+                initCountdown(timeLeft);
             }
         }
     };
     
     // Start the connection.
+    $.connection.hub.qs = "connectionName=" + connectionName;
     $.connection.hub.start().done(function () {
     });
 
