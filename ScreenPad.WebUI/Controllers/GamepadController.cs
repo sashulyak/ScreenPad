@@ -19,5 +19,10 @@ namespace ScreenPad.WebUI.Controllers
             var viewModel = gamepadModelBuilder.GetGamepad(gameConnectionName);
             return View(viewModel);
         }
+
+        public ActionResult GameOver()
+        {
+            return View();
+        }
     }
 }

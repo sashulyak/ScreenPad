@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/content/css/styles.css")">
 </head>
     <body>
-        <div id="container" data-game-connection-name="@Model.GameConnectionName">
+        <div id="container" data-game-connection-name="@Model.GameConnectionName" data-game-over-page-url="@Url.RouteUrl("GamepadGameOver")">
             <div id="cross">
                 <div id="left" data-message="left" class="button"></div>
                 <div id="right" data-message="right" class="button"></div>

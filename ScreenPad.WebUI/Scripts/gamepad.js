@@ -13,13 +13,13 @@
         holdInterval,
         holdTimeout,
         holdTimeoutDuration = 500,
-        holdIntervalPeriod = 50;
+        holdIntervalPeriod = 50,
+        gameOverPageUrl = $('#container').data('gameOverPageUrl');
     
     game.client.addNewMessageToPage = function (message, id) {
-        if (id === gameConnectionName) {
-            switch (message) {
-                case "gameover": alert('игра окончена'); break;
-            }
+        switch (message) {
+            case "gameover":
+                goToGameOverPage(gameOverPageUrl); break;
         }
     };
     // Start the connection.
@@ -46,6 +46,9 @@
         });
     });
     $.connection.hub.stateChanged(connectionStateChanged);
+    window.onunload = function () {
+        game.server.send("exit", gameConnectionName);
+    };
 });
 
 
@@ -70,4 +73,8 @@ function setButtonsSize() {
 
     // Set action button "top"
     $('#action').offset({ top: $('#cross').offset().top + $('#cross').height() / 2 - $('#action').height() / 2 });
+}
+
+function goToGameOverPage(gameOverPageUrl) {
+    window.location.href = gameOverPageUrl;
 }

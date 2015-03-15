@@ -187,6 +187,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Game\LogOn.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Gamepad\GameOver.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

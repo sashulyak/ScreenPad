@@ -7,6 +7,7 @@
         $level = $('#level'),
         $resultScoreField = $('#resultScore'),
         connectionName = $('#container').data('connectionName'),
+        gamePadConnectionName = "gp" + connectionName,
         prevScoreInPercents = 0,
         timeLeft = 60,
         minLevelScore = 300,
@@ -24,6 +25,7 @@
     }
 
     function showResults(totalScore) {
+        game.server.send("gameover", gamePadConnectionName);
         pause();
         $resultScoreField.text(totalScore);
         $resultPopup.show();
@@ -118,6 +120,9 @@
                 break;
             case "down":
                 actions.push(DIR.DOWN);
+                break;
+            case "exit":
+                gameOver = true;
                 break;
             }
         } else {

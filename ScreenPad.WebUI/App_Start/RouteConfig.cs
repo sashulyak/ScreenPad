@@ -10,9 +10,9 @@ namespace ScreenPad.WebUI
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "GamepadBusy",
-                "gamepad/busy",
-                new { controller = "Gamepad", action = "Busy" }
+                "GamepadGameOver",
+                "gamepad/gameover",
+                new { controller = "Gamepad", action = "GameOver" }
             );
             
             routes.MapRoute(
